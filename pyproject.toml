@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "controlgate-test-suite"
+version = "0.1.0"
+description = "Parent project for testing ControlGate across multiple vulnerability scenarios"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "controlgate",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[project.scripts]
+cg-test-all = "test_runner:main"
