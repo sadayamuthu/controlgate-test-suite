@@ -34,7 +34,7 @@ jobs:
         python-version: '3.12'
         
     - name: Install ControlGate
-      run: pip install controlgate
+      run: pip install git+https://github.com/sadayamuthu/controlgate.git@main
       
     - name: Run ControlGate PR Scan
       if: github.event_name == 'pull_request'
@@ -54,7 +54,7 @@ controlgate_scan:
   stage: scan
   image: python:3.12
   script:
-    - pip install controlgate
+    - pip install git+https://github.com/sadayamuthu/controlgate.git@main
     - |
       if [ -n "$CI_MERGE_REQUEST_TARGET_BRANCH_NAME" ]; then
         controlgate scan --mode pr --target-branch origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME --format gitlab
@@ -70,7 +70,7 @@ jenkinsfile = """pipeline {
     stages {
         stage('Install ControlGate') {
             steps {
-                sh 'pip install controlgate'
+                sh 'pip install git+https://github.com/sadayamuthu/controlgate.git@main'
             }
         }
         stage('Scan Code') {

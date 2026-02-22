@@ -1,5 +1,6 @@
 #!/bin/bash
-pip install controlgate
+CG_BRANCH=${1:-main}
+pip install git+https://github.com/sadayamuthu/controlgate.git@${CG_BRANCH}
 
 for d in cg-test-*; do
   if [ -d "$d" ]; then

@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Install ControlGate') {
             steps {
-                sh 'pip install controlgate'
+                sh 'pip install git+https://github.com/sadayamuthu/controlgate.git@main'
             }
         }
         stage('Scan Code') {

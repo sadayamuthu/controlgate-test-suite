@@ -9,7 +9,7 @@ description = "Parent project for testing ControlGate across multiple vulnerabil
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [
-    "controlgate",
+    "controlgate @ git+https://github.com/sadayamuthu/controlgate.git@main",
 ]
 
 [project.optional-dependencies]

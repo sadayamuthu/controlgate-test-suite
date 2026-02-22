@@ -20,7 +20,7 @@ jobs:
         python-version: '3.12'
         
     - name: Install ControlGate
-      run: pip install controlgate
+      run: pip install git+https://github.com/sadayamuthu/controlgate.git@main
       
     - name: Run ControlGate PR Scan
       if: github.event_name == 'pull_request'

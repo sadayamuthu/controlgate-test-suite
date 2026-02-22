@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 PYTHON := python3
+CG_BRANCH ?= main
 VENV := .venv
 PIP := $(VENV)/bin/pip
 CG := $(VENV)/bin/controlgate
@@ -18,8 +19,7 @@ install: $(VENV)/bin/controlgate ## Create venv and install controlgate
 
 $(VENV)/bin/controlgate:
 	$(PYTHON) -m venv $(VENV)
-	$(PIP) install --upgrade pip
-	$(PIP) install controlgate
+	$(PIP) install git+https://github.com/sadayamuthu/controlgate.git@$(CG_BRANCH)
 
 scan: install ## Run PR scans (markdown) on all test projects
 	$(RUNNER) --mode pr --format markdown
