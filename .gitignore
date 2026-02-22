@@ -1,5 +1,4 @@
 # Child test project repos (independent git repos used as scan targets)
-cg-test-*/
 
 # Virtual environments
 .venv/

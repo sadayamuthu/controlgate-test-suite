@@ -1,0 +1,14 @@
+stages:
+  - scan
+
+controlgate_scan:
+  stage: scan
+  image: python:3.12
+  script:
+    - pip install controlgate
+    - |
+      if [ -n "$CI_MERGE_REQUEST_TARGET_BRANCH_NAME" ]; then
+        controlgate scan --mode pr --target-branch origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME --format gitlab
+      else
+        controlgate scan --mode full --format gitlab
+      fi
