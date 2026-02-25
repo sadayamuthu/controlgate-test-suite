@@ -16,6 +16,14 @@ PROJECTS = [
     "cg-test-input",
     "cg-test-sbom",
     "cg-test-secrets",
+    "cg-fedramp-test-audit",
+    "cg-fedramp-test-change",
+    "cg-fedramp-test-crypto",
+    "cg-fedramp-test-iac",
+    "cg-fedramp-test-iam",
+    "cg-fedramp-test-input",
+    "cg-fedramp-test-sbom",
+    "cg-fedramp-test-secrets"
 ]
 
 BASE_DIR = Path(__file__).parent

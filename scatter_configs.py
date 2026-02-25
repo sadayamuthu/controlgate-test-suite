@@ -9,7 +9,15 @@ repos = [
     "cg-test-iam",
     "cg-test-input",
     "cg-test-sbom",
-    "cg-test-secrets"
+    "cg-test-secrets",
+    "cg-fedramp-test-audit",
+    "cg-fedramp-test-change",
+    "cg-fedramp-test-crypto",
+    "cg-fedramp-test-iac",
+    "cg-fedramp-test-iam",
+    "cg-fedramp-test-input",
+    "cg-fedramp-test-sbom",
+    "cg-fedramp-test-secrets"
 ]
 
 github_action = """name: ControlGate Scan
@@ -126,6 +134,14 @@ htmlcov/
 *.swp
 """
 
+controlgate_yml_standard = """baseline: moderate
+gov: false
+"""
+
+controlgate_yml_gov = """baseline: moderate
+gov: true
+"""
+
 compliant_code = """import hashlib
 import logging
 import os
@@ -185,7 +201,16 @@ for repo in repos:
         
     # 6. Compliant Code Example
     src_dir = os.path.join(repo_path, "src", repo.replace("-", "_"))
+    os.makedirs(src_dir, exist_ok=True)
     with open(os.path.join(src_dir, "compliant.py"), "w") as f:
         f.write(compliant_code)
+
+    # 7. .controlgate.yml Configuration File
+    # Define standard vs fedramp config based on the repo name prefix
+    with open(os.path.join(repo_path, ".controlgate.yml"), "w") as f:
+        if repo.startswith("cg-fedramp-test"):
+            f.write(controlgate_yml_gov)
+        else:
+            f.write(controlgate_yml_standard)
 
 print("Successfully injected enterprise configurations and compliant code into all projects!")
