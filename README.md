@@ -14,6 +14,16 @@ Parent project that orchestrates [ControlGate](https://github.com/sadayamuthu/co
 | `cg-test-input` | Input Validation | Command injection, shell=True, unsanitized input |
 | `cg-test-sbom` | Supply Chain / SBOM | Unpinned deps, known-vulnerable packages |
 | `cg-test-secrets` | Secrets Management | Hardcoded API keys, credentials, connection strings |
+| `cg-test-aiml` | AI/ML Security | trust_remote_code=True, unsafe model loading |
+| `cg-test-api` | API Security | TLS verification disabled |
+| `cg-test-container` | Container Security | Root user, privileged containers |
+| `cg-test-deps` | Dependency Vulnerability | Unpinned dependencies, HTTP registries |
+| `cg-test-incident` | Incident Response | Silenced exceptions, disabled alerts |
+| `cg-test-license` | License Compliance | Copyleft licenses (GPL, AGPL) |
+| `cg-test-memsafe` | Memory Safety | dynamic code execution, eval() |
+| `cg-test-observability` | Observability | Disabled monitoring |
+| `cg-test-privacy` | Data Privacy | PII in logs |
+| `cg-test-resilience` | Resilience & Backup | Deletion protection disabled |
 
 ## Quick Start
 
@@ -68,7 +78,18 @@ controlgate-test-suite/
 ├── cg-test-iam/
 ├── cg-test-input/
 ├── cg-test-sbom/
-└── cg-test-secrets/
+├── cg-test-secrets/
+├── cg-test-aiml/
+├── cg-test-api/
+├── cg-test-container/
+├── cg-test-deps/
+├── cg-test-incident/
+├── cg-test-license/
+├── cg-test-memsafe/
+├── cg-test-observability/
+├── cg-test-privacy/
+├── cg-test-resilience/
+└── cg-fedramp-test-*/        # FedRAMP variants for all gates
 ```
 
 Each child project includes:
