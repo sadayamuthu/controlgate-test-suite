@@ -11,6 +11,16 @@ repos = [
     "cg-test-input",
     "cg-test-sbom",
     "cg-test-secrets",
+    "cg-test-aiml",
+    "cg-test-api",
+    "cg-test-container",
+    "cg-test-deps",
+    "cg-test-incident",
+    "cg-test-license",
+    "cg-test-memsafe",
+    "cg-test-observability",
+    "cg-test-privacy",
+    "cg-test-resilience",
     "cg-fedramp-test-audit",
     "cg-fedramp-test-change",
     "cg-fedramp-test-crypto",
@@ -18,7 +28,17 @@ repos = [
     "cg-fedramp-test-iam",
     "cg-fedramp-test-input",
     "cg-fedramp-test-sbom",
-    "cg-fedramp-test-secrets"
+    "cg-fedramp-test-secrets",
+    "cg-fedramp-test-aiml",
+    "cg-fedramp-test-api",
+    "cg-fedramp-test-container",
+    "cg-fedramp-test-deps",
+    "cg-fedramp-test-incident",
+    "cg-fedramp-test-license",
+    "cg-fedramp-test-memsafe",
+    "cg-fedramp-test-observability",
+    "cg-fedramp-test-privacy",
+    "cg-fedramp-test-resilience"
 ]
 
 vuln_files = {
@@ -29,6 +49,16 @@ vuln_files = {
     "iam_policy.json": os.path.join(base_dir, "cg-test-iam/src/cg_test_iam/policy.json"),
     "input_vuln.py": os.path.join(base_dir, "cg-test-input/src/cg_test_input/vulnerable.py"),
     "secrets_vuln.py": os.path.join(base_dir, "cg-test-secrets/src/cg_test_secrets/vulnerable.py"),
+    "aiml_vuln.py": os.path.join(base_dir, "cg-test-aiml/src/cg_test_aiml/vulnerable.py"),
+    "api_vuln.py": os.path.join(base_dir, "cg-test-api/src/cg_test_api/vulnerable.py"),
+    "container_vuln.Dockerfile": os.path.join(base_dir, "cg-test-container/src/cg_test_container/Dockerfile"),
+    "requirements_deps_vuln.txt": os.path.join(base_dir, "cg-test-deps/src/cg_test_deps/vulnerable.txt"),
+    "incident_vuln.py": os.path.join(base_dir, "cg-test-incident/src/cg_test_incident/vulnerable.py"),
+    "requirements_license_vuln.txt": os.path.join(base_dir, "cg-test-license/src/cg_test_license/vulnerable.txt"),
+    "memsafe_vuln.py": os.path.join(base_dir, "cg-test-memsafe/src/cg_test_memsafe/vulnerable.py"),
+    "observability_vuln.py": os.path.join(base_dir, "cg-test-observability/src/cg_test_observability/vulnerable.py"),
+    "privacy_vuln.py": os.path.join(base_dir, "cg-test-privacy/src/cg_test_privacy/vulnerable.py"),
+    "resilience_vuln.py": os.path.join(base_dir, "cg-test-resilience/src/cg_test_resilience/vulnerable.py"),
 }
 
 for repo in repos:

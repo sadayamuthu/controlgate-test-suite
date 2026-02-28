@@ -1,0 +1,33 @@
+name: ControlGate Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+        
+    - name: Install ControlGate
+      run: pip install git+https://github.com/sadayamuthu/controlgate.git@main
+      
+    - name: Run ControlGate PR Scan
+      if: github.event_name == 'pull_request'
+      run: |
+        controlgate scan --mode pr --target-branch origin/main --format github
+        
+    - name: Run ControlGate Full Scan
+      if: github.event_name == 'push'
+      run: |
+        controlgate scan --mode full --format markdown

@@ -1,0 +1,23 @@
+pipeline {
+    agent {
+        docker { image 'python:3.12' }
+    }
+    stages {
+        stage('Install ControlGate') {
+            steps {
+                sh 'pip install git+https://github.com/sadayamuthu/controlgate.git@main'
+            }
+        }
+        stage('Scan Code') {
+            steps {
+                script {
+                    if (env.CHANGE_ID) {
+                        sh 'controlgate scan --mode pr --target-branch origin/${CHANGE_TARGET} --format jenkins'
+                    } else {
+                        sh 'controlgate scan --mode full --format html'
+                    }
+                }
+            }
+        }
+    }
+}

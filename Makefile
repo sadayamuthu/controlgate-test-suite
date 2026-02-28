@@ -8,8 +8,14 @@ RUNNER := $(VENV)/bin/python test_runner.py
 
 PROJECTS := cg-test-audit cg-test-change cg-test-crypto cg-test-iac \
             cg-test-iam cg-test-input cg-test-sbom cg-test-secrets \
+            cg-test-aiml cg-test-api cg-test-container cg-test-deps \
+            cg-test-incident cg-test-license cg-test-memsafe \
+            cg-test-observability cg-test-privacy cg-test-resilience \
             cg-fedramp-test-audit cg-fedramp-test-change cg-fedramp-test-crypto cg-fedramp-test-iac \
-            cg-fedramp-test-iam cg-fedramp-test-input cg-fedramp-test-sbom cg-fedramp-test-secrets
+            cg-fedramp-test-iam cg-fedramp-test-input cg-fedramp-test-sbom cg-fedramp-test-secrets \
+            cg-fedramp-test-aiml cg-fedramp-test-api cg-fedramp-test-container cg-fedramp-test-deps \
+            cg-fedramp-test-incident cg-fedramp-test-license cg-fedramp-test-memsafe \
+            cg-fedramp-test-observability cg-fedramp-test-privacy cg-fedramp-test-resilience
 
 .PHONY: help install scan scan-json scan-sarif clean setup-projects
 
