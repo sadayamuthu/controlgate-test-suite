@@ -194,6 +194,29 @@ def get_database_connection():
     return f"postgresql://{db_user}:{db_password}@{db_host}/prod"
 """
 
+pyproject_template = """[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "{repo}"
+version = "0.1.0"
+description = "Test project for {repo}"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "controlgate"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+"""
+
+requirements_content = """controlgate
+"""
+
 for repo in repos:
     repo_path = os.path.join(base_dir, repo)
     
@@ -232,5 +255,20 @@ for repo in repos:
             f.write(controlgate_yml_gov)
         else:
             f.write(controlgate_yml_standard)
+
+    # 8. pyproject.toml
+    pyproject_path = os.path.join(repo_path, "pyproject.toml")
+    if not os.path.exists(pyproject_path):
+        with open(pyproject_path, "w") as f:
+            f.write(pyproject_template.format(repo=repo))
+            
+    # 9. requirements.txt
+    req_path = os.path.join(repo_path, "requirements.txt")
+    if not os.path.exists(req_path):
+        with open(req_path, "w") as f:
+            f.write(requirements_content)
+            
+    # 10. tests/ directory
+    os.makedirs(os.path.join(repo_path, "tests"), exist_ok=True)
 
 print("Successfully injected enterprise configurations and compliant code into all projects!")
